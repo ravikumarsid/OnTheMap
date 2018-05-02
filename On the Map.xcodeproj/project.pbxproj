@@ -7,21 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4107BD072098CE6D0006232F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107BD062098CE6D0006232F /* Bolts.framework */; };
+		4107BD092098CE700006232F /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107BD082098CE700006232F /* FacebookLogin.framework */; };
+		4107BD0B2098CE760006232F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107BD0A2098CE760006232F /* FBSDKCoreKit.framework */; };
+		4107BD0D2098CE7C0006232F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107BD0C2098CE7C0006232F /* FBSDKShareKit.framework */; };
+		4107BD0F2098CE810006232F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107BD0E2098CE810006232F /* FBSDKLoginKit.framework */; };
+		4107BD112098CE850006232F /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107BD102098CE850006232F /* FacebookCore.framework */; };
+		4107BD132098CE890006232F /* FacebookShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107BD122098CE890006232F /* FacebookShare.framework */; };
+		4114636A208B943000F43E95 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41146369208B943000F43E95 /* UdacityClient.swift */; };
+		41253DA920963DF100305491 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41253DA820963DF100305491 /* ActivityIndicator.swift */; };
+		414FE82B209A2FCA0044BA31 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE82A209A2FCA0044BA31 /* Reachability.swift */; };
 		416403422079819B00C4AB2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416403412079819B00C4AB2D /* AppDelegate.swift */; };
-		416403442079819B00C4AB2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416403432079819B00C4AB2D /* ViewController.swift */; };
+		416403442079819B00C4AB2D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416403432079819B00C4AB2D /* LoginViewController.swift */; };
 		416403472079819B00C4AB2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416403452079819B00C4AB2D /* Main.storyboard */; };
 		416403492079819C00C4AB2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416403482079819C00C4AB2D /* Assets.xcassets */; };
 		4164034C2079819C00C4AB2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4164034A2079819C00C4AB2D /* LaunchScreen.storyboard */; };
+		416403542079C7AC00C4AB2D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416403532079C7AC00C4AB2D /* MapViewController.swift */; };
+		41B97FAA207F0C30006952FD /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B97FA9207F0C30006952FD /* MapTableViewController.swift */; };
+		41B97FAD207F25D7006952FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B97FAC207F25D7006952FD /* Constants.swift */; };
+		41BE1411208272690005CCD3 /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1410208272690005CCD3 /* StudentLocations.swift */; };
+		41BE14132082D4EF0005CCD3 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE14122082D4EF0005CCD3 /* InformationPostingViewController.swift */; };
+		61B1E697C67799F645B79F17 /* Pods_On_the_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5683A945F0D119FF910B293B /* Pods_On_the_Map.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4107BD062098CE6D0006232F /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4107BD082098CE700006232F /* FacebookLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4107BD0A2098CE760006232F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4107BD0C2098CE7C0006232F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4107BD0E2098CE810006232F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4107BD102098CE850006232F /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4107BD122098CE890006232F /* FacebookShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41146369208B943000F43E95 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		41253DA820963DF100305491 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		414FE82A209A2FCA0044BA31 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4164033E2079819B00C4AB2D /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		416403412079819B00C4AB2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		416403432079819B00C4AB2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		416403432079819B00C4AB2D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		416403462079819B00C4AB2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		416403482079819C00C4AB2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4164034B2079819C00C4AB2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4164034D2079819C00C4AB2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		416403532079C7AC00C4AB2D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		418280C1209962B5003F674C /* On the Map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "On the Map.entitlements"; sourceTree = "<group>"; };
+		41B97FA9207F0C30006952FD /* MapTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
+		41B97FAC207F25D7006952FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		41BE1410208272690005CCD3 /* StudentLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
+		41BE14122082D4EF0005CCD3 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		5683A945F0D119FF910B293B /* Pods_On_the_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_the_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71B3D7EA87C91A15C4562446 /* Pods-On the Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On the Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-On the Map/Pods-On the Map.debug.xcconfig"; sourceTree = "<group>"; };
+		8F5674EDC89CFEFB9ED538AA /* Pods-On the Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On the Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-On the Map/Pods-On the Map.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +64,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4107BD132098CE890006232F /* FacebookShare.framework in Frameworks */,
+				4107BD112098CE850006232F /* FacebookCore.framework in Frameworks */,
+				4107BD0F2098CE810006232F /* FBSDKLoginKit.framework in Frameworks */,
+				4107BD0D2098CE7C0006232F /* FBSDKShareKit.framework in Frameworks */,
+				4107BD0B2098CE760006232F /* FBSDKCoreKit.framework in Frameworks */,
+				4107BD092098CE700006232F /* FacebookLogin.framework in Frameworks */,
+				4107BD072098CE6D0006232F /* Bolts.framework in Frameworks */,
+				61B1E697C67799F645B79F17 /* Pods_On_the_Map.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CDF2EBFD38280648BC056FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4107BD122098CE890006232F /* FacebookShare.framework */,
+				4107BD102098CE850006232F /* FacebookCore.framework */,
+				4107BD0E2098CE810006232F /* FBSDKLoginKit.framework */,
+				4107BD0C2098CE7C0006232F /* FBSDKShareKit.framework */,
+				4107BD0A2098CE760006232F /* FBSDKCoreKit.framework */,
+				4107BD082098CE700006232F /* FacebookLogin.framework */,
+				4107BD062098CE6D0006232F /* Bolts.framework */,
+				5683A945F0D119FF910B293B /* Pods_On_the_Map.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		41146368208B93F900F43E95 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				41146369208B943000F43E95 /* UdacityClient.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
 		416403352079819B00C4AB2D = {
 			isa = PBXGroup;
 			children = (
 				416403402079819B00C4AB2D /* On the Map */,
 				4164033F2079819B00C4AB2D /* Products */,
+				8BE11901F2B018ED06E0A5B3 /* Pods */,
+				2CDF2EBFD38280648BC056FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +122,40 @@
 		416403402079819B00C4AB2D /* On the Map */ = {
 			isa = PBXGroup;
 			children = (
+				418280C1209962B5003F674C /* On the Map.entitlements */,
+				41146368208B93F900F43E95 /* Client */,
+				41B97FAB207F25A7006952FD /* ViewControllers */,
 				416403412079819B00C4AB2D /* AppDelegate.swift */,
-				416403432079819B00C4AB2D /* ViewController.swift */,
 				416403452079819B00C4AB2D /* Main.storyboard */,
 				416403482079819C00C4AB2D /* Assets.xcassets */,
 				4164034A2079819C00C4AB2D /* LaunchScreen.storyboard */,
 				4164034D2079819C00C4AB2D /* Info.plist */,
+				41B97FAC207F25D7006952FD /* Constants.swift */,
+				41BE1410208272690005CCD3 /* StudentLocations.swift */,
+				414FE82A209A2FCA0044BA31 /* Reachability.swift */,
 			);
 			path = "On the Map";
+			sourceTree = "<group>";
+		};
+		41B97FAB207F25A7006952FD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				416403432079819B00C4AB2D /* LoginViewController.swift */,
+				416403532079C7AC00C4AB2D /* MapViewController.swift */,
+				41B97FA9207F0C30006952FD /* MapTableViewController.swift */,
+				41BE14122082D4EF0005CCD3 /* InformationPostingViewController.swift */,
+				41253DA820963DF100305491 /* ActivityIndicator.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8BE11901F2B018ED06E0A5B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71B3D7EA87C91A15C4562446 /* Pods-On the Map.debug.xcconfig */,
+				8F5674EDC89CFEFB9ED538AA /* Pods-On the Map.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +165,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 416403502079819C00C4AB2D /* Build configuration list for PBXNativeTarget "On the Map" */;
 			buildPhases = (
+				869CB78EF4EA01B168F29043 /* [CP] Check Pods Manifest.lock */,
 				4164033A2079819B00C4AB2D /* Sources */,
 				4164033B2079819B00C4AB2D /* Frameworks */,
 				4164033C2079819B00C4AB2D /* Resources */,
+				52DA33D630D260B7AFD4735C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,6 +192,11 @@
 				TargetAttributes = {
 					4164033D2079819B00C4AB2D = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -130,13 +231,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52DA33D630D260B7AFD4735C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-On the Map/Pods-On the Map-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-On the Map/Pods-On the Map-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		869CB78EF4EA01B168F29043 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-On the Map-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4164033A2079819B00C4AB2D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				416403442079819B00C4AB2D /* ViewController.swift in Sources */,
+				41B97FAD207F25D7006952FD /* Constants.swift in Sources */,
+				41B97FAA207F0C30006952FD /* MapTableViewController.swift in Sources */,
+				41BE1411208272690005CCD3 /* StudentLocations.swift in Sources */,
+				416403442079819B00C4AB2D /* LoginViewController.swift in Sources */,
+				41BE14132082D4EF0005CCD3 /* InformationPostingViewController.swift in Sources */,
+				41253DA920963DF100305491 /* ActivityIndicator.swift in Sources */,
 				416403422079819B00C4AB2D /* AppDelegate.swift in Sources */,
+				416403542079C7AC00C4AB2D /* MapViewController.swift in Sources */,
+				414FE82B209A2FCA0044BA31 /* Reachability.swift in Sources */,
+				4114636A208B943000F43E95 /* UdacityClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +438,27 @@
 		};
 		416403512079819C00C4AB2D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71B3D7EA87C91A15C4562446 /* Pods-On the Map.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "On the Map/On the Map.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52SRVZM9XB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare\"",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookLogin\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKShareKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts\"",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -296,10 +473,18 @@
 		};
 		416403522079819C00C4AB2D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F5674EDC89CFEFB9ED538AA /* Pods-On the Map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "On the Map/On the Map.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52SRVZM9XB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare\"",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

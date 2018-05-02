@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/ravi/Documents/playground/On the Map/build/Debug-iphoneos/FacebookCore/FacebookCore.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/ravi/Documents/playground/On the Map/build/Pods.build/Debug-iphoneos/FacebookCore.build/unextended-module.modulemap',
+    }]
+  }]
+}
