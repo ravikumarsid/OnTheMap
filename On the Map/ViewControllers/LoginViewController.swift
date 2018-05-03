@@ -27,20 +27,11 @@ class LoginViewController: UIViewController, UITextViewDelegate {
         
         loginButton.frame.origin = CGPoint(x: self.view.center.x - (loginButton.frame.size.width/2), y: self.view.frame.size.height - loginButton.frame.size.height - CGFloat(bottomOffset))
         view.addSubview(loginButton)
-        
-        if (FBSDKAccessToken .current() != nil) {
-            DispatchQueue.main.async {
-                self.completeLogin()
-            }
-        }
+      self.facebookLogin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if (FBSDKAccessToken .current() != nil) {
-            DispatchQueue.main.async {
-                self.completeLogin()
-            }
-        }
+        self.facebookLogin()
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
@@ -63,17 +54,19 @@ class LoginViewController: UIViewController, UITextViewDelegate {
             } else {
                 if let accountLogin = results?[ResponseKeys.account] as? [String:AnyObject], let accountRegistered = accountLogin[ResponseKeys.accountRegistered] as? Bool {
                     print("Account login: \(accountLogin) is registered: \(accountRegistered)" )
+                    
                     self.completeLogin()
+                    UdacityClient.sharedInstance().getUdacityUserData(userID:  UdacityClient.sharedInstance().userID!)
                 }
             }
         }
     }
     
     func completeLogin(){
-        UdacityClient.sharedInstance().getUdacityUserData(userID:  UdacityClient.sharedInstance().userID!)
-        let controller = storyboard!.instantiateViewController(withIdentifier: "TabBarController")
-        
-        present(controller, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: "TabBarController")
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -94,6 +87,34 @@ class LoginViewController: UIViewController, UITextViewDelegate {
             let alert = UIAlertController(title: alertTitle, message: alertMesssage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func facebookLogin(){
+        let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if (email!.isEmpty) || (password!.isEmpty) {
+            if (FBSDKAccessToken .current() != nil) {
+                DispatchQueue.main.async {
+                    self.completeLogin()
+                }
+            }
+            
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
+                if (error == nil){
+                    let fbDetails = result as! NSDictionary
+                    print(fbDetails)
+                    guard let lastName = fbDetails["last_name"], let firstName = fbDetails["first_name"], let key = fbDetails["id"]  else {
+                        return
+                    }
+                    UdacityClient.sharedInstance().userFirstName = firstName as? String
+                    UdacityClient.sharedInstance().userLastName = lastName as? String
+                    UdacityClient.sharedInstance().userUniqueKey = key as? String
+                    
+                }else{
+                    print(error?.localizedDescription ?? "Not found")
+                }
+            })
         }
     }
 }
