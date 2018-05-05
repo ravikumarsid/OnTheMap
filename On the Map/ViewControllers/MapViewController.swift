@@ -13,7 +13,6 @@ import FBSDKLoginKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var toolbartop: UIToolbar!
-    var allStudents: [Students] = []
     var annotations = [MKPointAnnotation]()
     
     override func viewDidLoad() {
@@ -21,7 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         toolbartop.clipsToBounds = true
         
-        for dictionary in allStudents {
+        for dictionary in StudentsArray.sharedInstance.allStudents {
             let lat = CLLocationDegrees(dictionary.latitude)
             let long = CLLocationDegrees(dictionary.longitude)
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -46,16 +45,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.getStudentLocations()
         self.navigationController?.isNavigationBarHidden = true
     }
-  
+    
     func getStudentLocations() {
         let url: String = ParseMethods.GetStudentLocations
         var headers: [String:String] = [:]
+        var parameters: [String:AnyObject] = [:]
+        
+        parameters["order"] = "-updatedAt" as AnyObject
+        parameters["limit"] = 100 as AnyObject
         
         headers["X-Parse-Application-Id"] = ParseConstants.ParseApplicationId
         headers["X-Parse-REST-API-Key"] = ParseConstants.ParseRESTAPIKey
         
         let spinnerView = UIViewController.displaySpinner(onView: self.view)
-        let task = UdacityClient.sharedInstance().taskForGETMethod(url, headers: headers, isSubDataNeeded:  false) { (results, error) in
+        let task = UdacityClient.sharedInstance.taskForGETMethod(url, headers: headers,parameters: parameters, isSubDataNeeded:  false) { (results, error) in
             UIViewController.removeSpinner(spinner: spinnerView)
             if let error = error {
                 print(error)
@@ -72,7 +75,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             Students.studentsData = resultsArrayOfDictionaries
-            self.allStudents = Students.allStudentLocations
+            StudentsArray.sharedInstance.allStudents = Students.allStudentLocations
             
             DispatchQueue.main.async {
                 self.viewDidLoad()
@@ -123,18 +126,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func logoutTapped(_ sender: Any) {
          let spinnerView = UIViewController.displaySpinner(onView: self.view)
-        let _ = UdacityClient.sharedInstance().logoutSession { (results, error) in
+        let _ = UdacityClient.sharedInstance.logoutSession { (results, error) in
             UIViewController.removeSpinner(spinner: spinnerView)
             if error != nil {
                 print(String(describing: error))
                 return
             } else {
+                 FBSDKAccessToken.setCurrent(nil)
                 let fbLoginManager: FBSDKLoginManager = FBSDKLoginManager()
                 fbLoginManager.logOut()
-                
+       
                 DispatchQueue.main.async {
-                    let controller = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
-                    self.present(controller, animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
            
             }

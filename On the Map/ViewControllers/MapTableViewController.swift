@@ -14,18 +14,22 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var topToolbar: UIToolbar!
     
     var student_locations_array = [Students]()
-    var allStudents: [Students] = []
+    //var allStudents: [Students] = []
     
     func getStudentLocations() {
         let url: String = ParseMethods.GetStudentLocations
         var headers: [String:String] = [:]
+        var parameters: [String:AnyObject] = [:]
+        
+        parameters["order"] = "-updatedAt" as AnyObject
+        parameters["limit"] = 100 as AnyObject
         
         headers["X-Parse-Application-Id"] = ParseConstants.ParseApplicationId
         headers["X-Parse-REST-API-Key"] = ParseConstants.ParseRESTAPIKey
         
         let spinnerView = UIViewController.displaySpinner(onView: self.view)
         
-        let task = UdacityClient.sharedInstance().taskForGETMethod(url, headers: headers, isSubDataNeeded:  false) { (results, error) in
+        let task = UdacityClient.sharedInstance.taskForGETMethod(url, headers: headers, parameters: parameters, isSubDataNeeded:  false) { (results, error) in
             UIViewController.removeSpinner(spinner: spinnerView)
             
             if let error = error {
@@ -44,7 +48,7 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
                 }
                 
                 Students.studentsData = resultsArrayOfDictionaries
-                self.allStudents = Students.allStudentLocations
+                StudentsArray.sharedInstance.allStudents = Students.allStudentLocations
                 
                 DispatchQueue.main.async {
                     self.viewDidLoad()
@@ -56,28 +60,28 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.allStudents.count
+        return StudentsArray.sharedInstance.allStudents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapViewCell")
-        cell?.textLabel?.text = allStudents[indexPath.row].firstName
+        cell?.textLabel?.text = StudentsArray.sharedInstance.allStudents[indexPath.row].firstName
         cell?.imageView?.image = #imageLiteral(resourceName: "icon_pin")
-        cell?.detailTextLabel?.text = allStudents[indexPath.row].mediaURL
+        cell?.detailTextLabel?.text = StudentsArray.sharedInstance.allStudents[indexPath.row].mediaURL
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UIApplication.shared.open(URL(string: allStudents[indexPath.row].mediaURL)!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL(string: StudentsArray.sharedInstance.allStudents[indexPath.row].mediaURL)!, options: [:], completionHandler: nil)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topToolbar.clipsToBounds = true
-        self.studenTableView.delegate = self
-        self.studenTableView.dataSource = self
-        self.studenTableView.reloadData()
+        studenTableView.delegate = self
+        studenTableView.dataSource = self
+        studenTableView.reloadData()
     }
     
     
@@ -96,19 +100,18 @@ class MapTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func logoutTapped(_ sender: Any) {
         let spinnerView = UIViewController.displaySpinner(onView: self.view)
-        let _ = UdacityClient.sharedInstance().logoutSession { (results, error) in
+        let _ = UdacityClient.sharedInstance.logoutSession { (results, error) in
             UIViewController.removeSpinner(spinner: spinnerView)
             if error != nil {
                 print(String(describing: error))
                 return
             }
             else {
+                 FBSDKAccessToken.setCurrent(nil)
                 let fbLoginManager: FBSDKLoginManager = FBSDKLoginManager()
                 fbLoginManager.logOut()
                 DispatchQueue.main.async {
-                    let controller = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
-                    
-                    self.present(controller, animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
                 
             }

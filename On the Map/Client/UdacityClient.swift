@@ -11,6 +11,8 @@ import UIKit
 
 class UdacityClient: NSObject {
     
+    static let sharedInstance = UdacityClient()
+    
     var session = URLSession.shared
     var sessionID: String? = nil
     var userID: String? = nil
@@ -18,10 +20,24 @@ class UdacityClient: NSObject {
     var userLastName: String? = nil
     var userUniqueKey: String? = nil
     
-    func taskForGETMethod(_ url: String, headers: [String:String]? = nil, isSubDataNeeded: Bool? = true, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) ->URLSessionDataTask {
+    func taskForGETMethod(_ url: String, headers: [String:String]? = nil, parameters: [String:AnyObject]? = nil, isSubDataNeeded: Bool? = true, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) ->URLSessionDataTask {
         
-        print("Get request url: \(url)")
-        var request = URLRequest(url: URL(string: url)!)
+      
+        
+        var urlComponents = URLComponents(string: url)
+        
+        if let parameters = parameters  {
+            urlComponents?.queryItems = [URLQueryItem]()
+            for (key, value) in parameters {
+                let queryItem = URLQueryItem(name: key, value: "\(value)")
+                urlComponents?.queryItems!.append(queryItem)
+            }
+        }
+        print("Get request url: \(String(describing: urlComponents?.url))")
+        
+        //var request = URLRequest(url: URL(string: url)!)
+        var request = URLRequest(url: (urlComponents?.url)!)
+        
         
         if let headers = headers {
             for (key, val) in headers {
@@ -199,7 +215,7 @@ class UdacityClient: NSObject {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
         
-        let session = UdacityClient.sharedInstance().session
+        let session = UdacityClient.sharedInstance.session
         
         let task = session.dataTask(with: request) { (data, response, error) in
             if error != nil {
@@ -236,19 +252,19 @@ class UdacityClient: NSObject {
                     
                     print("Firts name: \(String(describing: newuserFirstName)) LastName: \(String(describing: newuserLastName)) Unique Key: \(String(describing: newuserUniqueKey))")
                     
-                    UdacityClient.sharedInstance().userFirstName = newuserFirstName
-                    UdacityClient.sharedInstance().userLastName = newuserLastName
-                    UdacityClient.sharedInstance().userUniqueKey = newuserUniqueKey
+                    UdacityClient.sharedInstance.userFirstName = newuserFirstName
+                    UdacityClient.sharedInstance.userLastName = newuserLastName
+                    UdacityClient.sharedInstance.userUniqueKey = newuserUniqueKey
                 }
             }
         }
     }
-    
+    /*
     class func sharedInstance() -> UdacityClient {
         struct Singleton {
             static var sharedInstance = UdacityClient()
         }
         return Singleton.sharedInstance
     }
-    
+    */
 }

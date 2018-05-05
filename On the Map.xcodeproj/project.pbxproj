@@ -27,6 +27,7 @@
 		41B97FAD207F25D7006952FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B97FAC207F25D7006952FD /* Constants.swift */; };
 		41BE1411208272690005CCD3 /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1410208272690005CCD3 /* StudentLocations.swift */; };
 		41BE14132082D4EF0005CCD3 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE14122082D4EF0005CCD3 /* InformationPostingViewController.swift */; };
+		41D892DF209E2A24001CE8D1 /* StudentsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D892DE209E2A24001CE8D1 /* StudentsArray.swift */; };
 		61B1E697C67799F645B79F17 /* Pods_On_the_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5683A945F0D119FF910B293B /* Pods_On_the_Map.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		41B97FAC207F25D7006952FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		41BE1410208272690005CCD3 /* StudentLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
 		41BE14122082D4EF0005CCD3 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		41D892DE209E2A24001CE8D1 /* StudentsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsArray.swift; sourceTree = "<group>"; };
 		5683A945F0D119FF910B293B /* Pods_On_the_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_the_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B3D7EA87C91A15C4562446 /* Pods-On the Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On the Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-On the Map/Pods-On the Map.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5674EDC89CFEFB9ED538AA /* Pods-On the Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On the Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-On the Map/Pods-On the Map.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		416403402079819B00C4AB2D /* On the Map */ = {
 			isa = PBXGroup;
 			children = (
+				41D892DB209E29C2001CE8D1 /* Model */,
 				418280C1209962B5003F674C /* On the Map.entitlements */,
 				41146368208B93F900F43E95 /* Client */,
 				41B97FAB207F25A7006952FD /* ViewControllers */,
@@ -131,7 +134,6 @@
 				4164034A2079819C00C4AB2D /* LaunchScreen.storyboard */,
 				4164034D2079819C00C4AB2D /* Info.plist */,
 				41B97FAC207F25D7006952FD /* Constants.swift */,
-				41BE1410208272690005CCD3 /* StudentLocations.swift */,
 				414FE82A209A2FCA0044BA31 /* Reachability.swift */,
 			);
 			path = "On the Map";
@@ -147,6 +149,15 @@
 				41253DA820963DF100305491 /* ActivityIndicator.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		41D892DB209E29C2001CE8D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41BE1410208272690005CCD3 /* StudentLocations.swift */,
+				41D892DE209E2A24001CE8D1 /* StudentsArray.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8BE11901F2B018ED06E0A5B3 /* Pods */ = {
@@ -290,6 +301,7 @@
 				41B97FAD207F25D7006952FD /* Constants.swift in Sources */,
 				41B97FAA207F0C30006952FD /* MapTableViewController.swift in Sources */,
 				41BE1411208272690005CCD3 /* StudentLocations.swift in Sources */,
+				41D892DF209E2A24001CE8D1 /* StudentsArray.swift in Sources */,
 				416403442079819B00C4AB2D /* LoginViewController.swift in Sources */,
 				41BE14132082D4EF0005CCD3 /* InformationPostingViewController.swift in Sources */,
 				41253DA920963DF100305491 /* ActivityIndicator.swift in Sources */,

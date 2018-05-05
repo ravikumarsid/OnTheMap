@@ -38,6 +38,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     }
 
     override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(true)
            self.mapViewHidden(isHidden: true)
     }
     
@@ -47,17 +48,15 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
-        let controller: UITabBarController
-        controller = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-        present(controller, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func finishButtonTapped(_ sender: Any) {
         //Post Student location
          let spinnerView = UIViewController.displaySpinner(onView: self.view)
         
-        let jsonLocation = "{\"uniqueKey\": \"\(UdacityClient.sharedInstance().userUniqueKey!)\",\"firstName\": \"\(UdacityClient.sharedInstance().userFirstName!)\",\"lastName\": \"\(UdacityClient.sharedInstance().userLastName!)\",\"mapString\": \"\(self.locationName)\",\"mediaURL\": \"\(self.websiteTextField.text!)\",\"latitude\": \(self.latitude),\"longitude\": \(self.longitude)}"
+        let jsonLocation = "{\"uniqueKey\": \"\(UdacityClient.sharedInstance.userUniqueKey!)\",\"firstName\": \"\(UdacityClient.sharedInstance.userFirstName!)\",\"lastName\": \"\(UdacityClient.sharedInstance.userLastName!)\",\"mapString\": \"\(self.locationName)\",\"mediaURL\": \"\(self.websiteTextField.text!)\",\"latitude\": \(self.latitude),\"longitude\": \(self.longitude)}"
 
-        let _ = UdacityClient.sharedInstance().taskForStudentLocationPOSTMethod(jsonBody: jsonLocation) { (results, error) in
+        let _ = UdacityClient.sharedInstance.taskForStudentLocationPOSTMethod(jsonBody: jsonLocation) { (results, error) in
             UIViewController.removeSpinner(spinner: spinnerView)
             if let error = error {
                 print(error)
@@ -85,9 +84,10 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
             let address = (locationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines))
             let spinnerView = UIViewController.displaySpinner(onView: self.view)
             geocoder.geocodeAddressString(address!) { (placemarks, error) in
+                UIViewController.removeSpinner(spinner: spinnerView)
                 self.processResponse(withPlacemarks: placemarks, error: error)
             }
-            UIViewController.removeSpinner(spinner: spinnerView)
+            
         }
     }
     

@@ -15,23 +15,35 @@ class LoginViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signUpTextView: UITextView!
+    @IBOutlet weak var loginButtonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        signUpTextView.sizeToFit()
         let attributedString = NSMutableAttributedString(string: "Don't have an account? Sign up")
         attributedString.addAttribute(.link, value: "https://www.udacity.com/account/auth#!/signup", range: NSRange(location: 23, length: 7))
         signUpTextView.attributedText = attributedString
         
         let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-        let bottomOffset = 20
-        
-        loginButton.frame.origin = CGPoint(x: self.view.center.x - (loginButton.frame.size.width/2), y: self.view.frame.size.height - loginButton.frame.size.height - CGFloat(bottomOffset))
+        let bottomOffset = 30
+        loginButton.frame.origin = CGPoint(x: self.view.center.x - (loginButton.frame.size.width/2), y: self.loginButtonOutlet.frame.maxY + CGFloat(bottomOffset))
+
         view.addSubview(loginButton)
-      self.facebookLogin()
+        self.facebookLogin()
+ 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.facebookLogin()
+        super.viewWillAppear(true)
+        emailField.text = nil
+        passwordField.text = nil
+        if (FBSDKAccessToken .current() != nil){
+            self.completeLogin()
+        } else {
+                FBSDKAccessToken.setCurrent(nil)
+                let fbLoginManager: FBSDKLoginManager = FBSDKLoginManager()
+                fbLoginManager.logOut()
+        }
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
@@ -41,7 +53,7 @@ class LoginViewController: UIViewController, UITextViewDelegate {
     func loginWith(email: String, password: String) {
         let spinnerView = UIViewController.displaySpinner(onView: self.view)
         
-        let _ = UdacityClient.sharedInstance().loginPOSTRequest(emailId: email, password: password) { (results, error) in
+        let _ = UdacityClient.sharedInstance.loginPOSTRequest(emailId: email, password: password) { (results, error) in
             UIViewController.removeSpinner(spinner: spinnerView)
             if let error = error {
                 print(error)
@@ -56,7 +68,7 @@ class LoginViewController: UIViewController, UITextViewDelegate {
                     print("Account login: \(accountLogin) is registered: \(accountRegistered)" )
                     
                     self.completeLogin()
-                    UdacityClient.sharedInstance().getUdacityUserData(userID:  UdacityClient.sharedInstance().userID!)
+                    UdacityClient.sharedInstance.getUdacityUserData(userID:  UdacityClient.sharedInstance.userID!)
                 }
             }
         }
@@ -77,7 +89,7 @@ class LoginViewController: UIViewController, UITextViewDelegate {
             self.displayAlert(alertTitle: "Invalid username/password", alertMesssage: "Please enter valid username and password")
         }
         else {
-            UdacityClient.sharedInstance().userID = self.emailField.text
+            UdacityClient.sharedInstance.userID = self.emailField.text
             self.loginWith(email: email!, password: password!)
         }
     }
@@ -91,31 +103,34 @@ class LoginViewController: UIViewController, UITextViewDelegate {
     }
     
     func facebookLogin(){
+        
         let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         if (email!.isEmpty) || (password!.isEmpty) {
             if (FBSDKAccessToken .current() != nil) {
                 DispatchQueue.main.async {
                     self.completeLogin()
-                }
-            }
-            
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error == nil){
-                    let fbDetails = result as! NSDictionary
-                    print(fbDetails)
-                    guard let lastName = fbDetails["last_name"], let firstName = fbDetails["first_name"], let key = fbDetails["id"]  else {
-                        return
-                    }
-                    UdacityClient.sharedInstance().userFirstName = firstName as? String
-                    UdacityClient.sharedInstance().userLastName = lastName as? String
-                    UdacityClient.sharedInstance().userUniqueKey = key as? String
                     
-                }else{
-                    print(error?.localizedDescription ?? "Not found")
                 }
-            })
+                
+                FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
+                    if (error == nil){
+                        let fbDetails = result as! NSDictionary
+                        print(fbDetails)
+                        guard let lastName = fbDetails["last_name"], let firstName = fbDetails["first_name"], let key = fbDetails["id"]  else {
+                            return
+                        }
+                        UdacityClient.sharedInstance.userFirstName = firstName as? String
+                        UdacityClient.sharedInstance.userLastName = lastName as? String
+                        UdacityClient.sharedInstance.userUniqueKey = key as? String
+                        
+                    }else{
+                        print(error?.localizedDescription ?? "Not found")
+                    }
+                })
+            }
         }
+        
     }
 }
 
